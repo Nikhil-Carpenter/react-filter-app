@@ -1,0 +1,13 @@
+/* .product-list{
+    animation: slide-up .5s ease-in;
+    transform: all .5s ease;
+}
+
+@keyframes slide-up {
+    0%{
+        transform: translateY(2rem);
+    }
+    100%{
+        transform: translateY(0);
+    }
+} */
