@@ -15,7 +15,9 @@ function App() {
   const handleSearch=(e)=>{
     setSearch(e.target.value);
     // console.log(search);
+    
   }
+
 
   useEffect(()=>{
     setFilterProducts(
@@ -24,6 +26,19 @@ function App() {
       })
     )
   },[search,allProducts])
+
+  const filterCategories=(category)=>{
+
+      if(category==="all"){
+        setFilterProducts(products)
+        return;
+      }
+
+      let filtercategoryProducts = allProducts.filter((product,idx)=>{
+        return product.category.includes(category)
+      })
+      setFilterProducts(filtercategoryProducts)
+  }
 
   return (
     <div className="App">
@@ -38,7 +53,7 @@ function App() {
 
             <div className=" filter-actions --flex-between">
               <Search inpValue={search} onInputChange={handleSearch}/>
-              <Categories/>
+              <Categories filterItems={filterCategories}/>
             </div>
 
           </div>
@@ -47,7 +62,7 @@ function App() {
         <main>
           <div className="container">
             {
-              filterProducts.length===0 ?(<h2>No product Found....</h2>):(
+              filterProducts.length===0 ?(<h2>No products Found....</h2>):(
 
                 <ProductList products={filterProducts} />
               )

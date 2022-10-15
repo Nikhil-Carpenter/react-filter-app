@@ -18,8 +18,6 @@ const ProductList = ({products}) => {
 
           })
         }
-              
-          
     </div>
   )
 }
